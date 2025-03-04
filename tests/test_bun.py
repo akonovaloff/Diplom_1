@@ -1,18 +1,20 @@
+import pytest
 from praktikum.bun import Bun
-
-test_bun = {"name": "Super bun", "price": 15}
+from test_data.test_data import tested_buns
 
 
 class TestBun:
 
-    def test_get_name(self):
+    @pytest.mark.parametrize("test_bun", tested_buns)
+    def test_get_name(self, test_bun):
         tested_name = test_bun["name"]
         bun = Bun(tested_name,
                   test_bun["price"])
 
         assert bun.get_name() == tested_name, "Булочка должна иметь заданное имя"
 
-    def test_get_price(self):
+    @pytest.mark.parametrize("test_bun", tested_buns)
+    def test_get_price(self, test_bun):
         tested_price = test_bun["price"]
         bun = Bun(test_bun["name"],
                   test_bun["price"])
