@@ -1,29 +1,29 @@
 import pytest
 from praktikum.ingredient import Ingredient
-from test_data.test_data import tested_ingredients
+from helpers.generators import random_ingredient_type, random_ingredient_name, random_price
 
 
 class TestIngredient:
-    @pytest.mark.parametrize("test_ingredient", tested_ingredients)
-    def test_get_name(self, test_ingredient):
-        tested_name = test_ingredient["name"]
-        ingredient = Ingredient(ingredient_type=test_ingredient["type"],
-                                name=tested_name,
-                                price=test_ingredient["price"])
-        assert ingredient.get_name() == tested_name, "Ингредиент должен иметь заданное имя"
+    def test_get_name(self):
+        """Тест проверяет имя созданного ингредиента"""
+        ingr_type = random_ingredient_type()
+        name = random_ingredient_name()
+        price = random_price()
+        ingredient = Ingredient(ingr_type, name, price)
+        assert ingredient.get_name() == name, "Ингредиент должен иметь заданное имя"
 
-    @pytest.mark.parametrize("test_ingredient", tested_ingredients)
-    def test_get_type(self, test_ingredient):
-        tested_type = test_ingredient["type"]
-        ingredient = Ingredient(ingredient_type=tested_type,
-                                name=test_ingredient["name"],
-                                price=test_ingredient["price"])
-        assert ingredient.get_type() == tested_type, "Ингредиент должен иметь заданный тип"
+    def test_get_type(self):
+        """Тест проверяет тип созданного ингредиента"""
+        ingr_type = random_ingredient_type()
+        name = random_ingredient_name()
+        price = random_price()
+        ingredient = Ingredient(ingr_type, name, price)
+        assert ingredient.get_type() == ingr_type, "Ингредиент должен иметь заданный тип"
 
-    @pytest.mark.parametrize("test_ingredient", tested_ingredients)
-    def test_get_price(self, test_ingredient):
-        tested_price = test_ingredient["price"]
-        ingredient = Ingredient(ingredient_type=test_ingredient["type"],
-                                name=test_ingredient["name"],
-                                price=tested_price)
-        assert ingredient.get_price() == tested_price, "Ингредиент должен иметь заданную цену"
+    def test_get_price(self):
+        """Тест проверяет цену созданного ингредиента"""
+        ingr_type = random_ingredient_type()
+        name = random_ingredient_name()
+        price = random_price()
+        ingredient = Ingredient(ingr_type, name, price)
+        assert ingredient.get_price() == price, "Ингредиент должен иметь заданную цену"
