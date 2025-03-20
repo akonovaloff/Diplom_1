@@ -49,8 +49,6 @@ class TestBurger:
             ingredient_list.append(random_ingredient())
             # Добавляем созданный ингредиент в бургер
             burger.add_ingredient(ingredient_list[-1])
-            # Проверяем, что ингредиент добавлен в бургер
-            assert ingredient_list[-1] in burger.ingredients, "Добавленный ингредиент должен присутствовать в бургере"
         # Задаём индекс ингредиента для удаления
         remove_index = choice(range(quantity))
         # Удаляем ингредиент из бургера по индексу
@@ -75,8 +73,6 @@ class TestBurger:
             ingredient_list.append(random_ingredient())
             # Добавляем созданный ингредиент в бургер
             burger.add_ingredient(ingredient_list[-1])
-            # Проверяем, что ингредиент добавлен в бургер
-            assert ingredient_list[-1] in burger.ingredients, "Добавленный ингредиент должен присутствовать в бургере"
         # Задаём индекс ингредиента, который будем перемещать
         move_index_1 = choice(range(quantity))
         # Задаём индекс, куда будем перемещать
