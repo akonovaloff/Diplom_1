@@ -106,21 +106,6 @@ class TestBurger:
             # Проверяем, что цена бургера изменяется с учетом добавленного ингредиента
             assert burger.get_price() == check_price, "В цене бургера должна учитываться цена каждого ингредиента"
 
-    @pytest.mark.parametrize("ingredients_quantity", ((1), (2), (3), (4), (5), (6)))
-    def test_get_receipt(self, ingredients_quantity):
-        """Тест на составление рецепта бургера с разным числом ингредиентов"""
-        # Создаем бургер
-        burger = Burger()
-        # Создаем булочку
-        bun = random_bun()
-        # Добавляем булочку в бургер
-        burger.set_buns(bun)
-        # Проверяем, что название булочки содержится в рецепте бургера
-        assert bun.name in burger.get_receipt(), "Рецепт бургера должен содержать название булочки"
-        for _ in range(ingredients_quantity):
-            # Создаем ингредиент
-            ingredient = random_ingredient()
-            # Добавляем ингредиент в бургер
-            burger.add_ingredient(ingredient)
-            # Проверяем, что название ингредиента содержится в рецепте бургера
-            assert ingredient.name in burger.get_receipt(), "Рецепт бургера должен содержать название добавленного ингредиента"
+    def test_get_receipt(self, burger):
+        """Тест на составление рецепта бургера"""
+        assert burger.get_receipt() == "(==== white bun ====)\n= sauce sour cream =\n(==== white bun ====)\n\nPrice: 600"
